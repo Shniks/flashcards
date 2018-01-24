@@ -14,6 +14,10 @@ class Round
     @card_count = 0
   end
 
+  def guesses
+    @guesses
+  end
+
   def current_card
     deck.cards[@card_count]
   end
