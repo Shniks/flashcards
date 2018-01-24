@@ -21,16 +21,4 @@ class GamePlayTest < Minitest::Test
     assert_equal 0, @game.instance_variable_get(:@card_count)
   end
 
-  def test_assign_correct_file_based_on_user_deck_choice
-    @game.deck_choice = "1"
-    assert_equal "Friends", @game.assign_correct_file_based_on_user_deck_choice
-    assert_equal './friends.txt', @game.filename
-  end
-
-  def test_if_outside_classes_instantiated
-    @game.filename = './friends.txt'
-    @game.initialize_game
-    assert_instance_of Deck, @game.deck
-  end
-
 end
