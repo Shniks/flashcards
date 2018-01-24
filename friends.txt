@@ -1,11 +1,11 @@
-How many times has Chandler kissed Rachel?,3
-"I definitely don't like the name Ross." - Who said it?,Phoebe
-What do Monica and Rachel do to get their apartment back?,kiss
-Who is the female paleontologist both Ross and Joey date?,Charlie
-What bird causes Phoebe to drop the lottery tickets?,Pigeon
-Where did Ross and Emily end up on their first date?,Vermont
-What is the name of Phoebe's birth mother?,Phoebe
-Where did Chandler go to hide when he had cold feet?,Office
-What type of bed does Monica accidentally get from the Mattress King?,Racecar
-Who is the first character to talk on 'Friends?',Monica
-Where is Rachel leaving to in "The Last One?",Paris
+How many times has Chandler kissed Rachel?,3,Between 1 and 5
+"I definitely don't like the name Ross." - Who said it?,Phoebe,The one that is flaky
+What do Monica and Rachel do to get their apartment back?,kiss,Also an American rock band
+Who is the female paleontologist both Ross and Joey date?,Charlie,Also went to the Chocolate Factory
+What bird causes Phoebe to drop the lottery tickets?,Pigeon,Also refers to kind of chest
+Where did Ross and Emily end up on their first date?,Vermont,Bernie's state
+What is the name of Phoebe's birth mother?,Phoebe,The one that is flaky
+Where did Chandler go to hide when he had cold feet?,Office,Also a famous TV series about the work environment
+What type of bed does Monica accidentally get from the Mattress King?,Racecar,Driven it on a racetrack
+Who is the first character to talk on 'Friends?',Monica,The one that was initially overweight
+Where is Rachel leaving to in "The Last One?",Paris,The city of Louvre

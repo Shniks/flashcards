@@ -7,14 +7,14 @@ require 'pry'
 class GuessTest < Minitest::Test
 
   def test_it_exists
-    card = Card.new("What is the capital of Alaska?", "Juneau")
+    card = Card.new("What is the capital of Alaska?", "Juneau", "Not Anchorage")
     guess = Guess.new("Juneau", card)
 
     assert_instance_of Guess, guess
   end
 
   def test_user_can_submit_a_guess
-    card = Card.new("What is the capital of Alaska?", "Juneau")
+    card = Card.new("What is the capital of Alaska?", "Juneau", "Not Anchorage")
     guess = Guess.new("Juneau", card)
     guess.card
     guess.response
@@ -27,7 +27,7 @@ class GuessTest < Minitest::Test
   end
 
   def test_user_can_submit_another_guess
-    card = Card.new("Which planet is closest to the sun?", "Mercury")
+    card = Card.new("Which planet is closest to the sun?", "Mercury", "Next to Venus")
     guess = Guess.new("Saturn", card)
     guess.card
     guess.response

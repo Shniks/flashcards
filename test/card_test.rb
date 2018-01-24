@@ -6,7 +6,7 @@ require 'pry'
 class CardTest < Minitest::Test
 
   def setup
-    @card = Card.new("What is the capital of Alaska?", "Juneau")
+    @card = Card.new("What is the capital of Alaska?", "Juneau", "Not Anchorage")
   end
 
   def test_if_it_exists
@@ -19,6 +19,10 @@ class CardTest < Minitest::Test
 
   def test_if_it_has_an_answer
     assert_equal "Juneau", @card.answer
+  end
+
+  def test_if_it_can_take_hints
+    assert_equal "Not Anchorage", @card.hint
   end
 
 end

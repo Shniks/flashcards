@@ -13,8 +13,8 @@ class RoundTest < Minitest::Test
               :round
 
   def setup
-    @card_1 = Card.new("What is the capital of Alaska?", "Juneau")
-    @card_2 = Card.new("Approximately how many miles are in one astronomical unit?", "93,000,000")
+    @card_1 = Card.new("What is the capital of Alaska?", "Juneau", "Not Anchorage")
+    @card_2 = Card.new("Approximately how many miles are in one astronomical unit?", "93,000,000", "Less than 100 million")
     @deck = Deck.new([card_1, card_2])
     @round = Round.new(deck)
   end
