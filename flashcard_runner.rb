@@ -3,8 +3,7 @@ require './lib/game_play.rb'
 class FlashCardRunner
 
   def self.start_game
-    game = GamePlay.new
-    game.game_response
+    GamePlay.new.game_response
   end
 
 end
