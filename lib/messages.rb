@@ -44,10 +44,13 @@ module Messages
     if response.downcase == "hint"
       puts " "
       print "Hint: "
+      hint_mess = true
       puts playing_card.hint
       until response.downcase != "hint" do
-      print "Guess again: "
-      response = gets.chomp.to_s
+        print "Guess again: "
+        response = gets.chomp.to_s
+        puts " "
+        puts "Jeez! I have already given the hint. Quit being greedy...\n" if response.downcase == "hint"
       end
     end
     response
