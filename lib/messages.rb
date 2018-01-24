@@ -37,6 +37,7 @@ module Messages
 
   def card_number_and_round_message(card_count, round, playing_card)
     puts "This is card number #{card_count + 1} out of #{round.deck.cards.length}.\n\nQuestion: #{playing_card.question}"
+    puts "(Enter 'Hint' to get a hint anytime)\n\n"
     print "Your answer: "
   end
 
