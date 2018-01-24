@@ -24,6 +24,7 @@ class GamePlay
   end
 
   def get_user_deck_input
+    get_user_name
     clear
     user_deck_input_message
     user_choice_message
@@ -42,6 +43,7 @@ class GamePlay
   end
 
   def assign_correct_file_based_on_user_deck_choice
+    get_user_deck_input
     if @deck_choice == "1"
       @filename = './friends.txt'
       @deck_name = 'Friends'
@@ -52,6 +54,7 @@ class GamePlay
   end
 
   def initialize_game
+    assign_correct_file_based_on_user_deck_choice
     @cards = CardGenerator.new(@filename).cards
     @deck = Deck.new(@cards)
     @round = Round.new(@deck)
@@ -59,6 +62,7 @@ class GamePlay
   end
 
   def play_game
+    initialize_game
     clear
     @round.deck.cards.length.times do
       deck_welcome_message(@deck_name, @cards)
@@ -79,6 +83,7 @@ class GamePlay
   end
 
   def game_response
+    play_game
     clear
     game_over_response(@round, @user_name)
     STDIN.getch
