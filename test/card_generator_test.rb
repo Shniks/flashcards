@@ -5,8 +5,6 @@ require 'pry'
 
 class RoundTest < Minitest::Test
 
-  attr_reader :cardgenerator
-
   def setup
     @cardgenerator = CardGenerator.new('./friends.txt')
   end

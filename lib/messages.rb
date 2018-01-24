@@ -1,5 +1,9 @@
 module Messages
 
+  def clear
+    system "clear"
+  end 
+
   def user_name_message
     print "Welcome to Flashcards\n---------------------\n\n"
     print "Please enter your name: "
@@ -36,5 +40,23 @@ module Messages
     print "Your answer: "
   end
 
+  def correct_answer_if_incorrect_guess_message(round, playing_card)
+    puts "The correct answer is '#{playing_card.answer}'." if round.guesses.last.feedback == "Incorrect!"
+  end
+
+  def press_any_key_message
+    print "Press any key to proceed..."
+  end
+
+  def game_over_response(round, user_name)
+    puts "****** Game over! ******\n\n"
+    puts "You had #{round.number_correct} correct guesses out of #{round.deck.cards.length} for a score of #{round.percent_correct}%.\n"
+    if round.percent_correct > 75
+      puts "#{user_name}, you are a genius! Your mama would be so proud. Nice job!\n\n"
+    else
+      puts "#{user_name}, you ain't a genius fo sho. Shame on you and the horse you rode in on!\n\n"
+    end
+    print "Press any key to exit the game..."
+  end
 
 end

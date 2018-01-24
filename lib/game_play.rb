@@ -18,13 +18,13 @@ class GamePlay
   end
 
   def get_user_name
-    system "clear"
+    clear
     user_name_message
     @user_name = gets.chomp
   end
 
   def get_user_deck_input
-    system "clear"
+    clear
     user_deck_input_message
     user_choice_message
     @deck_choice = gets.chomp
@@ -33,7 +33,7 @@ class GamePlay
 
   def validate_choice(choice)
     until choice.to_i.between?(1,2) do
-      system "clear"
+      clear
       validate_choice_message
       user_choice_message
       choice = gets.chomp
@@ -59,7 +59,7 @@ class GamePlay
   end
 
   def play_game
-    system "clear"
+    clear
     @round.deck.cards.length.times do
       deck_welcome_message(@deck_name, @cards)
       deck_choice_message(@deck_choice)
@@ -68,27 +68,20 @@ class GamePlay
       response = gets.chomp.to_s
       "#{@round.record_guess(response)}\n"
       puts @round.guesses.last.feedback
-      puts "The correct answer is '#{playing_card.answer}'." if @round.guesses.last.feedback == "Incorrect!"
+      correct_answer_if_incorrect_guess_message(@round, playing_card)
       puts " "
       @card_count += 1
-      print "Press any key to proceed..."
+      press_any_key_message
       STDIN.getch
-      system "clear"
+      clear
     end
   end
 
   def game_response
-    system "clear"
-    puts "****** Game over! ******\n\n"
-    puts "You had #{@round.number_correct} correct guesses out of #{@round.deck.cards.length} for a score of #{@round.percent_correct}%.\n"
-    if @round.percent_correct > 75
-      puts "#{@user_name}, you are a genius! Your mama would be so proud. Nice job!\n\n"
-    else
-      puts "#{@user_name}, you ain't a genius fo sho. Shame on you and the horse you rode in on!\n\n"
-    end
-    print "Press any key to exit the game..."
+    clear
+    game_over_response(@round, @user_name)
     STDIN.getch
-    system "clear"
+    clear
   end
 
 end
