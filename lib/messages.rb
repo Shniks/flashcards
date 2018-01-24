@@ -2,7 +2,7 @@ module Messages
 
   def clear
     system "clear"
-  end 
+  end
 
   def user_name_message
     print "Welcome to Flashcards\n---------------------\n\n"
@@ -38,6 +38,19 @@ module Messages
   def card_number_and_round_message(card_count, round, playing_card)
     puts "This is card number #{card_count + 1} out of #{round.deck.cards.length}.\n\nQuestion: #{playing_card.question}"
     print "Your answer: "
+  end
+
+  def hint_message(response, playing_card)
+    if response.downcase == "hint"
+      puts " "
+      print "Hint: "
+      puts playing_card.hint
+      until response.downcase != "hint" do
+      print "Guess again: "
+      response = gets.chomp.to_s
+      end
+    end
+    response
   end
 
   def correct_answer_if_incorrect_guess_message(round, playing_card)
