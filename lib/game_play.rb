@@ -65,8 +65,8 @@ class GamePlay
       deck_choice_message(@deck_choice)
       playing_card = @deck.cards[@card_count]
       card_number_and_round_message(@card_count, @round, playing_card)
-      response = gets.chomp.to_s
-      response = hint_message(response, playing_card)
+      first_response = gets.chomp.to_s
+      response = hint_message(first_response, playing_card)
       "#{@round.record_guess(response)}\n"
       puts @round.guesses.last.feedback
       correct_answer_if_incorrect_guess_message(@round, playing_card)
