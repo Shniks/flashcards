@@ -60,6 +60,7 @@ class GamePlay
   end
 
   def begin_game
+    clear
     deck_welcome_message(@deck_name, @cards)
     deck_choice_message(@deck_choice)
     @playing_card = @deck.cards[@card_count]
@@ -75,7 +76,6 @@ class GamePlay
   end
 
   def play_game
-    clear
     @round.deck.cards.length.times do
       begin_game
       first_response = gets.chomp.to_s
