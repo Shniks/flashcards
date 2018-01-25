@@ -86,13 +86,17 @@ class GamePlay
   end
 
   def game_result
-    final_result = []
+    final_result = ["Question", "Answer", "Player Response", "Response Correct?\n"]
     @round.guesses.each_with_index do |guess, index|
       final_result.push(guess.card.question).push(guess.card.answer)
       final_result.push(guess.response).push(@round.user_response[index])
-      final_result.push("\n")
+      final_result << "\n"
     end
     final_result.join(",")
+  end
+
+  def game_output_file
+
   end
 
 end
