@@ -70,4 +70,18 @@ class RoundTest < Minitest::Test
     assert_equal 0, round.percent_correct
   end
 
+  def test_it_records_if_user_response_was_true_or_false
+    result = round.record_guess("Juneau")
+
+    assert_equal [true], round.user_response
+    refute_equal [false], round.user_response
+  end
+
+  def test_it_records_whether_another_user_response_was_true_or_false
+    result = round.record_guess("Juneau")
+    result = round.record_guess("2")
+
+    assert_equal [true, false], round.user_response
+  end
+
 end
