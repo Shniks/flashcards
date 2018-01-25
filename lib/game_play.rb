@@ -59,23 +59,31 @@ class GamePlay
     @card_count = 0
   end
 
+  def begin_game
+    deck_welcome_message(@deck_name, @cards)
+    deck_choice_message(@deck_choice)
+    @playing_card = @deck.cards[@card_count]
+    card_number_and_round_message(@card_count, @round, @playing_card)
+  end
+
+  def advance_next_card
+    puts " "
+    @card_count += 1
+    press_any_key_message
+    STDIN.getch
+    clear
+  end
+
   def play_game
     clear
     @round.deck.cards.length.times do
-      deck_welcome_message(@deck_name, @cards)
-      deck_choice_message(@deck_choice)
-      playing_card = @deck.cards[@card_count]
-      card_number_and_round_message(@card_count, @round, playing_card)
+      begin_game
       first_response = gets.chomp.to_s
-      final_response = hint_message(first_response, playing_card)
-      "#{@round.record_guess(final_response)}\n"
+      final_response = hint_message(first_response, @playing_card)
+      @round.record_guess(final_response)
       puts @round.guesses.last.feedback
-      correct_answer_if_incorrect_guess_message(@round, playing_card)
-      puts " "
-      @card_count += 1
-      press_any_key_message
-      STDIN.getch
-      clear
+      correct_answer_if_incorrect_guess_message(@round, @playing_card)
+      advance_next_card
     end
   end
 
