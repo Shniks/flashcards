@@ -4,6 +4,7 @@ require './lib/card_generator'
 require 'io/console'
 require './lib/messages'
 require 'pry'
+require 'Date'
 
 class GamePlay
 
@@ -96,7 +97,9 @@ class GamePlay
   end
 
   def game_output_file
-
+    date_time = DateTime.now
+    result = "results-" + date_time.strftime("%Y-%m-%d-%H:%M")
+    IO.write(result, game_result)
   end
 
 end
