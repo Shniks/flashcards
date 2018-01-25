@@ -24,7 +24,6 @@ class GamePlay
   end
 
   def get_user_deck_input
-    get_user_name
     clear
     user_deck_input_message
     user_choice_message
@@ -43,7 +42,6 @@ class GamePlay
   end
 
   def assign_correct_file_based_on_user_deck_choice
-    get_user_deck_input
     if @deck_choice == "1"
       @filename = './friends.txt'
       @deck_name = 'Friends'
@@ -54,7 +52,6 @@ class GamePlay
   end
 
   def initialize_game
-    assign_correct_file_based_on_user_deck_choice
     @cards = CardGenerator.new(@filename).cards
     @deck = Deck.new(@cards)
     @round = Round.new(@deck)
@@ -62,7 +59,6 @@ class GamePlay
   end
 
   def play_game
-    initialize_game
     clear
     @round.deck.cards.length.times do
       deck_welcome_message(@deck_name, @cards)
@@ -70,8 +66,8 @@ class GamePlay
       playing_card = @deck.cards[@card_count]
       card_number_and_round_message(@card_count, @round, playing_card)
       first_response = gets.chomp.to_s
-      response = hint_message(first_response, playing_card)
-      "#{@round.record_guess(response)}\n"
+      final_response = hint_message(first_response, playing_card)
+      "#{@round.record_guess(final_response)}\n"
       puts @round.guesses.last.feedback
       correct_answer_if_incorrect_guess_message(@round, playing_card)
       puts " "
@@ -83,11 +79,20 @@ class GamePlay
   end
 
   def game_response
-    play_game
     clear
     game_over_response(@round, @user_name)
     STDIN.getch
     clear
+  end
+
+  def game_result
+    final_result = []
+    @round.guesses.each_with_index do |guess, index|
+      final_result.push(guess.card.question).push(guess.card.answer)
+      final_result.push(guess.response).push(@round.user_response[index])
+      final_result.push("\n")
+    end
+    final_result.join(",")
   end
 
 end
