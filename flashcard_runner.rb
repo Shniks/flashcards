@@ -11,6 +11,7 @@ class FlashCardRunner
     game.play_game
     game.game_response
     game.game_result
+    game.game_output_file
   end
 
 end
