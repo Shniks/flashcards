@@ -1,8 +1,5 @@
 require './lib/game_play.rb'
 
-class FlashCardRunner
-
-  def self.start_game
     game = GamePlay.new
     game.get_user_name
     game.get_user_deck_input
@@ -12,8 +9,4 @@ class FlashCardRunner
     game.game_response
     game.game_result
     game.game_output_file
-  end
-
-end
-
-FlashCardRunner.start_game
+  
