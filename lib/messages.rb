@@ -53,6 +53,8 @@ module Messages
         puts " "
         puts "Jeez! I have already given the hint. Quit being greedy...\n" if response.downcase == "hint"
       end
+    else
+      response
     end
     response
   end
