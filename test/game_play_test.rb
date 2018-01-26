@@ -21,4 +21,14 @@ class GamePlayTest < Minitest::Test
     assert_equal 0, @game.instance_variable_get(:@card_count)
   end
 
+  def test_it_assign_a_deck
+    @deck_choice = "2"
+    expected = {'Famous Sayings' => './sayings.txt'}
+    assert_equal expected, @game.assign_deck
+  end
+
+  def test_if_round_can_be_initialized
+    assert_instance_of Round, @game.initialize_game
+  end
+
 end
