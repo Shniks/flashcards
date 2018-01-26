@@ -9,4 +9,3 @@ require './lib/game_play.rb'
     game.game_response
     game.game_result
     game.game_output_file
-  

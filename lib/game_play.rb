@@ -10,10 +10,6 @@ class GamePlay
 
   include Messages
 
-  attr_reader   :deck
-  attr_accessor :deck_choice,
-                :filename
-
   def initialize
     @card_count = 0
   end
@@ -56,7 +52,6 @@ class GamePlay
     @cards = CardGenerator.new(@filename).cards
     @deck = Deck.new(@cards)
     @round = Round.new(@deck)
-    @card_count = 0
   end
 
   def begin_game
