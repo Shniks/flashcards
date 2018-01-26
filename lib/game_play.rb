@@ -79,7 +79,7 @@ class GamePlay
     STDIN.getch
     clear
   end
-  
+
   def game_response
     clear
     game_over_response(@round, @user_name)
@@ -88,11 +88,11 @@ class GamePlay
   end
 
   def game_result
-    final_result = ["Question", "Answer", "Player Response", "Response Correct?\n"]
+    final_result = "Question,Answer,Player Response,Response Correct?\n"
     @round.guesses.each_with_index do |guess, index|
-      final_result.push("#{guess.card.question}, #{guess.card.answer}, #{guess.response}, #{@round.user_response[index]}\n")
+      final_result += "#{guess.card.question}," + "#{guess.card.answer}," + "#{guess.response}," + "#{@round.user_response[index]}\n"
     end
-    final_result.join(",")
+    final_result
   end
 
   def game_output_file
