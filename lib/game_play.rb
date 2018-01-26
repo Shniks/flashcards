@@ -38,36 +38,26 @@ class GamePlay
     @deck_choice = choice
   end
 
-  def assign_correct_file_based_on_user_deck_choice
+  def assign_deck
     if @deck_choice == "1"
-      @filename = './friends.txt'
-      @deck_name = 'Friends'
+      chosen_deck = {'Friends' => './friends.txt'}
     else
-      @filename = './sayings.txt'
-      @deck_name = 'Famous Sayings'
+      chosen_deck = {'Famous Sayings' => './sayings.txt'}
     end
   end
 
   def initialize_game
-    @cards = CardGenerator.new(@filename).cards
+    @cards = CardGenerator.new(assign_deck.values.join).cards
     @deck = Deck.new(@cards)
     @round = Round.new(@deck)
   end
 
   def begin_game
     clear
-    deck_welcome_message(@deck_name, @cards)
+    deck_welcome_message(assign_deck.keys.join, @cards)
     deck_choice_message(@deck_choice)
     @playing_card = @deck.cards[@card_count]
     card_number_and_round_message(@card_count, @round, @playing_card)
-  end
-
-  def advance_next_card
-    puts " "
-    @card_count += 1
-    press_any_key_message
-    STDIN.getch
-    clear
   end
 
   def play_game
@@ -82,6 +72,14 @@ class GamePlay
     end
   end
 
+  def advance_next_card
+    puts " "
+    @card_count += 1
+    press_any_key_message
+    STDIN.getch
+    clear
+  end
+  
   def game_response
     clear
     game_over_response(@round, @user_name)
