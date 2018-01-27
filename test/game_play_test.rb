@@ -29,6 +29,8 @@ class GamePlayTest < Minitest::Test
 
   def test_if_round_can_be_initialized
     assert_instance_of Round, @game.initialize_game
+    assert_instance_of Deck, @game.round.deck
+    assert_instance_of Card, @game.round.deck.cards[0]
   end
 
 end

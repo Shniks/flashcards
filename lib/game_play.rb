@@ -8,6 +8,9 @@ require 'Date'
 
 class GamePlay
 
+  attr_reader :deck_choice,
+              :round
+
   include Messages
 
   def initialize
@@ -25,7 +28,7 @@ class GamePlay
     user_deck_input_message
     user_choice_message
     @deck_choice = gets.chomp
-    validate_choice(@deck_choice)
+    validate_choice(deck_choice)
   end
 
   def validate_choice(choice)
@@ -39,10 +42,10 @@ class GamePlay
   end
 
   def assign_deck
-    if @deck_choice == "1"
-      chosen_deck = {'Friends' => './friends.txt'}
+    if deck_choice == "1"
+      {'Friends' => './friends.txt'}
     else
-      chosen_deck = {'Famous Sayings' => './sayings.txt'}
+      {'Famous Sayings' => './sayings.txt'}
     end
   end
 
@@ -55,7 +58,7 @@ class GamePlay
   def begin_game
     clear
     deck_welcome_message(assign_deck.keys.join, @cards)
-    deck_choice_message(@deck_choice)
+    deck_choice_message(deck_choice)
     @playing_card = @deck.cards[@card_count]
     card_number_and_round_message(@card_count, @round, @playing_card)
   end
